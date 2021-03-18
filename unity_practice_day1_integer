@@ -1,0 +1,27 @@
+using System;
+
+namespace part1_day1
+{
+    class Program
+    {
+        // 여기에 주석을 달 수 있어요.
+        /* 
+          여기에 주석을 달 수 있어요.
+         */
+        static void Main(string[] args)
+        {
+            // 데이터 + 로직
+            // byte(1바이트 0 ~ 255), short(2바이트 -3만~3만), int(4바이트 -21억~21억), long(8바이트)
+            // sbyte(1바이트 -128~127), ushort(2바이트 0~6만), uint(4바이트 0~43억), ulong(8바이트)
+            int hp;
+            short level = 100;
+            long id;
+            hp = 100;
+
+            byte attack = 0;
+            attack--; // 0에서 1을 빼면서 언더플로우가 일어나 최고값으로 올라갈 수 있음
+
+            Console.WriteLine("Hello Number ! {0}", hp);
+        }
+    }
+}
