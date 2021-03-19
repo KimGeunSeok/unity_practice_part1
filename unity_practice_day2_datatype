@@ -1,0 +1,52 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // 10진수 
+            // 0 1 2 3 4 5 6 7 8 9
+
+            // 2진수
+            // 0~1 
+            // 0b를 넣는다 0b00 0b01 0b10 0b11 0b100 0b101....
+
+            // 16진수
+            // 0~9 a b c d e f
+            // 0x00 0x01 0x02 ... 0x0F 
+            // 0x10
+
+            // 2 -> 16진수 변환
+            // 0b10001111 = 0x 1000 1111 -> 0x8F
+
+            // 0b11111111 = 255 1byte의 범위
+
+            // 2의 복소수를 이용한 부호 표현, 최상위 비트가 1이면 음수, 0이면 양수
+            // 양수를 같은 음수로 만들때 모든 숫자를 반전 시키고 1을 더한다.
+
+            // 1바이트(참/거짓)
+            bool b;
+            b = true;
+            b = false;
+
+            // 소수 
+            // 4.0, 1.3
+            
+            // 4바이트
+            float f = 3.14f;  
+            // 8바이트
+            double d = 3.14;
+
+            // 문자 
+            // 2바이트
+            char c = '가'; //2바이트 글자만 출력
+
+            // 문자열
+            string str = "Hello World";
+
+            Console.WriteLine(str);
+        }
+    }
+}
