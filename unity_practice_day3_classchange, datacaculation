@@ -1,0 +1,66 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // 형변환 주의할 점
+            // 1. 바구니 크기가 다른 경우:
+            int a = 0xFFFFFFF;
+            short b = (short)a; // 캐스팅 큰 값에서 작은 값으로 옮길땐 주의
+            // 2. 바구니 크기는 같긴 한데, 부호가 다를 경우
+            byte c = 255;
+            sbyte sb = (sbyte)c;
+            // underflow(값이 미만일 경우),  overflow(값이 넘쳐날 경우)
+            // 0xFF = 0b11111111 = -1 
+
+            // 3. 소수 변환은 인접한 값으로 변함.
+            float f = 3.1414f;
+            double d = f;
+
+            int hp = 100;
+            int level = 50;
+
+            // + - * / %
+            hp = 100 + 1;
+            Console.WriteLine(hp);
+            hp = 100 - 1;
+            Console.WriteLine(hp);
+            hp = 100 * 2;
+            Console.WriteLine(hp);
+            hp = 100 / 2;
+            Console.WriteLine(hp);
+            hp = (1 + 2) * 100;
+            Console.WriteLine(hp);
+            hp = 100 % 3; // (33 * 3 +1)
+
+            Console.WriteLine(hp);
+
+            hp++; //  +1
+            hp--; // -1
+
+            ++hp; 
+            --hp;
+
+            Console.WriteLine(hp++); //코드를 실행 후, 더한다.
+            Console.WriteLine(++hp); //코드를 실행 전, 더한다.
+
+            // < <= > >= == !=
+            bool high = hp < 100;
+            bool eqaul = (hp == 100);
+            bool isAlive = (hp > 0);
+            bool isHighLevel = (level >= 40);
+
+            // && AND  || OR  ! NOT
+            // a = 살아있는 고렙 유저인가요?
+            bool and = isAlive && isHighLevel;
+            // b = 살아있거나, 고렙이거나, 둘중 하나인가요?
+            bool or = isAlive || isHighLevel;
+            // c = 죽은 유저인가요?
+            bool not = isAlive;
+
+        }
+    }
+}
