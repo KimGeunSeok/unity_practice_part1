@@ -1,0 +1,68 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int id = 123;
+            int key = 401;
+
+            // XOR 암호화 복호화 
+            int c = id ^ key;
+            int d = a ^ key;
+
+            uint num = 8                 ;
+
+            // << >> &(and) |(or) ^(xor) ~(not)
+            num = num >> 1;
+            // 비트 이동시, 끝에 부호비트도 따라가기 때문에 주의 unsigned 쓰는게 나음. ex)10111100 -> 11011110
+            Console.WriteLine(num);
+            Console.WriteLine(c);
+            Console.WriteLine(d);
+
+            // 할당 연산
+
+            int a;
+            a = 100;
+
+            int b;
+            b = a;
+
+            a += 1;
+            a -= 1;
+            a *= 1;
+            a /= 1;
+            a %= 1;
+            a &= 1;
+            Console.WriteLine(a);
+            a <<= 1;
+            a >>= 1;
+            a |= 1;
+            Console.WriteLine(a);
+            a ^= 1;
+            Console.WriteLine(a);
+
+            int a = (3 + 2) * 3 | 1 ^ 1
+            // 계산 우선 순위(참고용)
+            // 1. ++ --
+            // 2. * / %
+            // 3. + -
+            // 4. << >>
+            // 5. < >
+            // 6. == !=
+            // 7. &
+            // 8. ^
+            // 9. |
+            // ..
+
+            // var 자동으로 타입을 맞춰주는 타입
+            var num = 3;
+
+            var num2 = "Hello World";
+
+
+        }
+    }
+}
