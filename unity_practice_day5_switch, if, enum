@@ -1,0 +1,204 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        //열거형
+        enum Choice // ,값이 0~ 순으로 선언됨. 따로 선언도 가능.
+        {
+            ROCK,
+            PAPER,
+            SCISSOIRS // (int)값으로 변환해주고 choice.변수로 선언해줘야된다.
+        }
+        static void Main(string[] args)
+        {
+            // 코드가 늘어날수록 상수값만의 표현은 지양해야 된다. 
+            const int ROCK = 1;  // const 값을 넣으면 switch 문에 숫자를 대체할 수 있다.
+            const int PARER = 2;
+            const int SCISSORS = 0;
+
+            int hp = 10;
+            bool isDead = (hp <= 0);
+
+            if (isDead)
+            {
+                Console.WriteLine("You are Dead");
+            }
+            else
+            {
+                Console.WriteLine("You are Alive ");
+            }
+
+            // 확장성이 없고, 시스템에 무리를 주는 코딩
+
+            int choice = 0; // 0:가위, 1:바위, 2:보
+
+            if (choice == 0)
+                Console.WriteLine("가위입니다");
+            else
+            {
+                if (choice == 1)
+                    Console.WriteLine("바위입니다");
+                if (choice == 2)
+                    Console.WriteLine("바위입니다");
+                else
+                    Console.WriteLine("치트키입니다");
+
+            }
+
+            // else else if를 쓰면 확장성이 용이해지고, 무리를 덜 준다.
+            if (choice == 0)
+            {
+                Console.WriteLine("가위입니다");
+            }
+            else if (choice == 1)
+            {
+                Console.WriteLine("바위입니다");
+            }
+            else if (choice == 2)
+            {
+                Console.WriteLine("보입니다");
+            }
+            else
+            {
+                Console.WriteLine("치트키입니다");
+            }
+
+            switch (choice) // 정수, 문자열만 가능 switch, case, break는 3형제, if else문에 축소판
+            {
+                case 0:
+                    Console.WriteLine("가위입니다");
+                    break;
+                case 1:
+                    Console.WriteLine("바위입니다");
+                    break;
+                case 2:
+                    Console.WriteLine("보입니다");
+                    break;
+                case 3:
+                    Console.WriteLine("치트키입니다");
+                    break;
+                default:
+                    Console.WriteLine("다 실패했습니다.");
+                    break;
+            }
+
+            // 삼항연산자
+
+            int number = 26;
+
+            string isPair = ((number % 2) == 0 ? "짝수입니다" : "홀수입니다"); // (조건 ? 맞을떄 : 틀릴때);
+
+            // 위 코드와 같다 축소하기 좋음
+
+            if ((number % 2) == 0)
+                isPair = "짝수입니다";
+            else
+                isPair = "홀수입니다";
+
+            Console.WriteLine(isPair);
+
+            // 가위바위보 게임
+
+            Random rand = new Random();
+            int aiChoice = rand.Next(0, 3);
+
+            int choose = Convert.ToInt32(Console.ReadLine());
+
+            switch(choose)
+            {
+                case (int)Choice.SCISSOIRS:
+                    Console.WriteLine("당신의 선택은 가위입니다.");
+                    break;
+                case 1:
+                    Console.WriteLine("당신의 선택은 바위입니다.");
+                    break;
+                case 2:
+                    Console.WriteLine("당신의 선택은 보입니다.");
+                    break;
+            }
+            switch (aiChoice)
+            {
+                case 0:
+                    Console.WriteLine("컴퓨터의 선택은 가위입니다.");
+                    break;
+                case 1:
+                    Console.WriteLine("컴퓨터의 선택은 바위입니다.");
+                    break;
+                case 2:
+                    Console.WriteLine("컴퓨터의 선택은 보입니다.");
+                    break;
+            }
+
+            // 조건 : 승리 무승부 패배 내가 짠 로직
+            if (choose == 0)
+            {
+                switch (aiChoice)
+                {
+                    case 0:
+                        Console.WriteLine("무승부입니다.");
+                        break;
+                    case 1:
+                        Console.WriteLine("패배입니다.");
+                        break;
+                    case 2:
+                        Console.WriteLine("승리입니다.");
+                        break;
+                }
+            }
+            else if (choose == 1)
+            {
+                switch (aiChoice)
+                {
+                    case 0:
+                        Console.WriteLine("승리입니다.");
+                        break;
+                    case 1:
+                        Console.WriteLine("무승부입니다.");
+                        break;
+                    case 2:
+                        Console.WriteLine("패배입니다.");
+                        break;
+                }
+            }
+            else 
+            {
+                switch (aiChoice)
+                {
+                    case 0:
+                        Console.WriteLine("패배입니다.");
+                        break;
+                    case 1:
+                        Console.WriteLine("승리입니다.");
+                        break;
+                    case 2:
+                        Console.WriteLine("무승부입니다.");
+                        break;
+                }
+            }
+            // 수업 로직
+            if (choose == aiChoice)
+            {
+                Console.WriteLine("무승부입니다.");
+            }
+            else if (choose == 0 && aiChoice == 2)
+            {
+                Console.WriteLine("승리입니다.");
+            }
+            else if (choose == 1 && aiChoice == 0)
+            {
+                Console.WriteLine("승리입니다.");
+            }
+            else if (choose == 2 && aiChoice == 1)
+            {
+                Console.WriteLine("승리입니다.");
+            }
+            else
+            {
+                Console.WriteLine("패배입니다.");
+            }
+        }
+    }
+}
+// 승리 조건 0:2, 1:0, 2:1 패배조건 0:1, 1:2, 2:0
