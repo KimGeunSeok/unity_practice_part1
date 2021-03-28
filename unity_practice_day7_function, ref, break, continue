@@ -1,0 +1,70 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        // Method Function Procedure
+        // 한정자 반환형식 이름(매개변수목록)
+        static void HelloWorld()
+        {
+            Console.WriteLine("Hello World");
+        }
+        // 덧셈 함수
+        static int Add(int a, int b)
+        {
+            int result = a + b;
+            return result;
+        }
+        static void Addone(ref int number) //  ref 추가 시, 참조에 의한 변수 선언 
+        {
+            number += 1;
+        }
+
+
+        static void Main(string[] args)
+        {
+            // break 활용법
+            int num = 1002;
+            // 소수인지 아닌지 분별하는 코드
+            bool isPrime = true;
+            for (int i = 2; i < num; i++)
+            {
+                if ((num % i) ==0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime)
+            {
+                Console.WriteLine("소수입니다!");
+            }
+            else
+            {
+                Console.WriteLine("소수가 아닙니다!:");
+            }
+            // continue 활용법
+
+            for (int i = 1; i < 100; i++)
+            {
+                if ((i % 3) != 0)
+                    continue;
+
+                 Console.WriteLine($"3으로 나누는 숫자 발견 : {i}");
+  
+            }
+            HelloWorld();
+            int a = 4;
+            int b = 5; // 값 선언은 함수안에서 이뤄진다. 외부에선 안 이뤄짐
+            int result = Program.Add(4, 5);
+            Console.WriteLine(result);
+            int a1 = 0;
+            Program.Addone(ref a1); // a1의 값을 증가시키지만 함수 안에서만 증가, 실제 값이 증가하진 않음. 
+            // ref를 선언하면 복사가 아닌 참조가 되서 실제 값을 증가시킴
+            // 복사(짝퉁), 참조(진퉁)
+            Console.WriteLine(a1);
+        }
+
+    }
+}
