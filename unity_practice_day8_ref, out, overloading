@@ -1,0 +1,115 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+        static void AddOne(ref int number)
+        {
+            number += 1;
+        }
+
+        static int AddOne2(int number)
+        {
+            return number + 1;
+        }
+
+        // out
+        static void Divide(int a, int b, out int result1, out int result2) 
+            //out을 쓰면 참조호출이 되고 반드시 값을 입력해줘야됨.
+        {
+            result1 = a / b;
+            result2 = a % b;
+        }
+
+        // 함수 이름의 재사용 method overloading
+        // 함수이름, 매개변수형식을 보고 반환형식, 변수 순서가 달라진다고 오버로딩이 되지 않는다.
+        static int Add(int a, int b, int c = 0, float d = 1.0f, double e = 3.0f)
+        {
+            Console.WriteLine("Add int 호출");
+            return a + b + c;
+        }
+
+        static float Add(float a, float b)
+        {
+            Console.WriteLine("Add float 호출");
+            return a + b;
+        }
+        
+        static int Factorial(int n)
+        {
+            int rets = 1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                rets *= i;
+            }
+
+            return rets;
+        }
+        // 재귀함수
+        static int Fact(int n)
+        {
+            if (n <= 1)
+                return 1;
+            return n * Fact(n - 1);
+        }
+        static void Main(string[] args)
+        {
+            int a = 0;
+            Program.AddOne(ref a);
+            Console.WriteLine(a);
+
+            int b = Program.AddOne2(a); // 따로 저장이 가능해서 밑에 방식이 선호됨.
+            a = b;
+            a = Program.AddOne2(a);
+            Console.WriteLine(a);
+
+            int num1 = 1;
+            int num2 = 2;
+            Program.Swap(ref num1, ref num2);
+            Console.WriteLine(num1);
+            Console.WriteLine(num2);
+
+            int result1;
+            int result2;
+            Divide(10, 3, out result1, out result2);
+
+            Console.WriteLine(result1);
+            Console.WriteLine(result2);
+
+            int ret = Program.Add(2, 3);
+            float ret2 = Program.Add(2.0f, 3.0f);
+            // Console.WriteLine(ret); 
+            Program.Add(1, 2, d:2.0f); //지정한 값만 선언 할 수 도 있음.
+
+            // 구구단
+            for (int i = 1; i < 10; i++)
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    Console.WriteLine("{0} x {1} = {2}", i, j, (i * j)); // (" ${i} * {j} = {i * j}")
+                }
+            }
+            // 별 찍기
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            // 팩토리얼
+            // 5! = 5 * 4 * 3 * 2 * 1
+            int rets = Fact(5);
+            Console.WriteLine(rets);
+        }
+    }
+}
